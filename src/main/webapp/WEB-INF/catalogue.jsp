@@ -34,7 +34,7 @@
                             <span class="card-title grey-text text-darken-4">Titre de la formation<i class="material-icons right">close</i></span>
                             <p>Ceci est un petit résumé !...</p>
                             <p class="regBtn">
-                                <a href="/Projet_LO54/formation" class="btn waves-effect waves-light" type="submit" name="action">S'enrégistrer
+                                <a href="/Projet_LO54/formation" class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
                                     <i class="material-icons right">send</i>
                                 </a>
                             </p>
@@ -161,7 +161,7 @@
     <footer>
         <%@ include file="piedDePage.jsp" %>
     </footer>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="./materialize/js/materialize.js"></script>
     <script type="text/javascript" src="./js/js.js"></script>
 </body>

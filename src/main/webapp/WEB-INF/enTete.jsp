@@ -6,14 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<div class="navbar-fixed">
+<div class="navbar-fixed red">
     <nav>
         <div class="nav-wrapper">
             <img class="header-img brand-logo.left" src="/Projet_LO54/img/logog.png"/>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="#">Calendrier</a></li>
+                <li><a href="/Projet_LO54/catalogue">Accueil</a></li>
+                <li><a href="">Calendrier</a></li>
+                <li><a href="#">e-formation</a></li>
             </ul>
         </div>
     </nav>    
