@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,7 +29,7 @@
             </div>
             <div class="row">
                 <div class="col s10 offset-s1">
-                    <h4>Titre de la formation</h4>
+                    <h4><c:out value="${session.course.title}" default="Titre de la formation"/> </h4>
                     <p class="text-align">
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

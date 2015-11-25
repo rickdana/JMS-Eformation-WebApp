@@ -23,8 +23,16 @@ and open the template in the editor.
 
 .img-box{
     width: 713px;
-height: 337px;
+    height: 337px;
 }
-.text-align{
+.aDroite{
+    text-align: -webkit-right;
+}
+.login{
     
+}
+.form_login{
+    padding: 24px 30px 15px 30px;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    height: 220px;
 }

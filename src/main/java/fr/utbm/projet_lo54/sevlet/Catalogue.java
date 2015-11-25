@@ -5,8 +5,20 @@
  */
 package fr.utbm.projet_lo54.sevlet;
 
+import fr.utbm.eformation.core.entity.CourseSession;
+import fr.utbm.eformation.core.entity.Location;
+import fr.utbm.eformation.core.service.FormationService;
+import fr.utbm.eformation.core.service.LocationService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,13 +32,30 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Catalogue", urlPatterns = {"/catalogue"})
 public class Catalogue extends HttpServlet {
 
-    public Catalogue(){
+    public Catalogue() {
         super();
     }
-   
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        FormationService f = new FormationService();
+        LocationService l = new LocationService();
+        List<CourseSession> courseSessionList;
+        List<Location> locationList;
+        //On recupère la liste complète des formation disponible
+        courseSessionList = f.getallFormations();
+
+        /*On recupère toutes les localisations disponibles. 
+         * la liste sera affiché dans une une liste déroulante dans le formulaire de recherche de formation
+         */
+        locationList = l.getListLocations();
+        //System.out.println(list.size());
+
+        request.setAttribute("locationList", locationList);
+        request.setAttribute("listFormation", courseSessionList);
+
+        RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp");
+        dis.forward(request, response);
     }
 
     /**
@@ -38,8 +67,30 @@ public class Catalogue extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        FormationService f = new FormationService();
+        LocationService l = new LocationService();
+        List<CourseSession> courseSessionList;
+        List<Location> locationList;
+        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+
+        /*
+            recupère les paramètre de la recherche 
+        */
+        String motCle = request.getParameter("motCle");
+        String d = request.getParameter("date");
+        Date date = null;
+        try {
+            date = formater.parse(d);
+        } catch (ParseException ex) {
+            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       // System.out.println(date.toString());
+        String lieu = request.getParameter("lieu");
         
+        //courseSessionList = f.searchFormations(motCle, date, lieu);
+        RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp");
+        dis.forward(request, response);
     }
 
     /**
