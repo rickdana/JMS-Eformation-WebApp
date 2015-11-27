@@ -50,7 +50,7 @@
                 <div class="modal-content">
                     <h4>Modal Header</h4>
                     <div class="row">
-                        <form class="col s12">
+                        <form class="col s12" method="POST">
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input placeholder="Prénom" id="first_name" type="text" class="validate">

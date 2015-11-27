@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function () {
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('#openModal').click(function () {
         $('#modal1').openModal({
             dismissible: true,
@@ -13,7 +13,6 @@ $(document).ready(function () {
             out_duration: 200 // Transition out duration
         });
     });
-
     $('input#input_text, textarea#textarea1').characterCounter();
     $('#openModalReg').click(function () {
         $('#modal2').openModal({
@@ -28,7 +27,6 @@ $(document).ready(function () {
     $('#modalValideBtnReg').click(function () {
         $('#modal2').closeModal();
     });
-
     $('#login_val_btn').click(function () {
         var login = $('#login').val();
         var pass = $('#motDePasse').val();
@@ -41,27 +39,39 @@ $(document).ready(function () {
             dataType: dataType
         });
         /*$.post(url, {login: login, motDePasse: pass})
-                .done(function (data) {
-                    alert("Data Loaded: " + data);
-        });*/
+         .done(function (data) {
+         alert("Data Loaded: " + data);
+         });*/
     });
-    
-    $('#sessionSearchBtn').click(function(){
+    $('#sessionSearchBtn').click(function () {
+        reqParam = {
+            motCle: null,
+            date: null,
+            lieu: null
+        };
         var motCle = $('#motCle').val();
-        var date = $('#data').val();
+        var date = $('#date').val();
         var lieu = $('#listeVille option:selected').text();
         var url = "http://localhost:8080/Projet_LO54/catalogue";
-        $('#modal1').closeModal();
+        reqParam.date = date;
+        reqParam.motCle = motCle;
+        reqParam.lieu = lieu;
+        //alert("Data sent:"+reqParam.date+" " +reqParam.lieu);
+        //alert("Requette sent to : " + url);
         $.ajax({
             type: "POST",
             url: url,
-            data: {motCle:motCle, date:date, lieu:lieu},
-            success: function(){alert("Succes");},
-            dataType: dataType
+            data: reqParam,
+            success: function () {
+                        alert("Succes");
+                        $('#modal1').closeModal();
+                    },
+            error: function () {
+                //alert("error :");
+                $('#modal1').closeModal();
+            },
+            dataType: "json"
         });
-        
     });
-
-
 });
 

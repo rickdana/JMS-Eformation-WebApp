@@ -4,11 +4,10 @@
     Author     : java
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <footer class="page-footer" 
         <div class="footer-copyright">
         <div class="container">
-            Â© UTBM 2015 Copyright
+            © UTBM 2015 Copyright
             <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
 </footer>
