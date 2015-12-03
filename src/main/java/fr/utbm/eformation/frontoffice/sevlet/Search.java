@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,7 @@ public class Search extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/searchResult.jsp");
         dis.forward(request, response);
+
     }
 
     /**
@@ -67,8 +69,7 @@ public class Search extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         FormationService f = new FormationService();
         LocationService l = new LocationService();
         List<CourseSession> resultList;
@@ -85,12 +86,8 @@ public class Search extends HttpServlet {
          recupère les paramètre de la recherche
          */
         motCle = request.getParameter("motCle");
-        if (motCle.equals("")) {
-            motCle = null;
-        }
-        d = request.getParameter("date");
-        System.out.println("---------> date : " + d);
         ville = request.getParameter("lieu");
+        d = request.getParameter("date");
 
         if (!d.equals("")) {
             try {
@@ -103,10 +100,13 @@ public class Search extends HttpServlet {
                 Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        if (!ville.equals("Choose your option")) {
-            lieu = new Location();
-            lieu.setCity(ville);
 
+        if (ville != null) {
+            if (!ville.equals("Choose your option")) {
+                lieu = new Location();
+                lieu.setCity(ville);
+
+            }
         }
 
         System.out.println("---------> Mot clé : " + motCle);
@@ -118,8 +118,11 @@ public class Search extends HttpServlet {
         if (resultList.size() == 0) {
             System.out.println("Aucun résultat ne correspond aux critères sélectionés");
         }
+
         request.setAttribute("res", resultList.size());
-        //request.setAttribute("resultList", resultList);
+        request.setAttribute("resultList", resultList);
+        ServletContext context = this.getServletContext();
+        //System.out.println("Current context :"+context.);
         RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/searchResult.jsp");
         dis.forward(request, response);
     }

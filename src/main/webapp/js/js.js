@@ -43,7 +43,13 @@ $(document).ready(function () {
          alert("Data Loaded: " + data);
          });*/
     });
-    $('#sessionSearchBtn').click(function () {
+    /* Requette Ajax de recherche*/
+    $('#sessionSearchBtn').click(function(){
+        $('#searchForm').submit();
+        $('#modal1').closeModal();
+        
+    });
+    /*$('#sessionSearchBtn').click(function () {
         reqParam = {
             motCle: null,
             date: null,
@@ -52,7 +58,7 @@ $(document).ready(function () {
         var motCle = $('#motCle').val();
         var date = $('#date').val();
         var lieu = $('#listeVille option:selected').text();
-        var url = "http://localhost:8080/Projet_LO54/catalogue";
+        var url = "http://localhost:8080/Projet_LO54/search";
         reqParam.date = date;
         reqParam.motCle = motCle;
         reqParam.lieu = lieu;
@@ -67,8 +73,49 @@ $(document).ready(function () {
                         $('#modal1').closeModal();
                     },
             error: function () {
-                //alert("error :");
+                alert("error :");
                 $('#modal1').closeModal();
+            },
+            dataType: "html"
+        });
+    });
+    */
+    /*Requette Ajax d'inscripton*/
+     $('#modalValideBtnReg').click(function () {
+        Param = {
+            firstName: null,
+            lastName: null,
+            address: null,
+            phone: null,
+            email:null,
+            postalCode:null
+        };
+        var firstName= $('#first_name').val();
+        var lastName = $('#last_name').val();
+        var address = $('#adresse').val();
+        var phone = $('#tel').val();;
+        var email = $('#email').val();;
+        var postalCode = $('#codePostal').val();;
+        var url = "http://localhost:8080/Projet_LO54/formation";
+        Param.firstName = firstName;
+        Param.lastName = lastName;
+        Param.address = address;
+        Param.phone = phone;
+        Param.email = email;
+        Param.postalCode = postalCode;
+        //alert("Data sent:"+reqParam.date+" " +reqParam.lieu);
+        //alert("Requette sent to : " + url);
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: Param,
+            success: function () {
+                        alert("Succes");
+                        $('#modal2').closeModal();
+                    },
+            error: function () {
+                //alert("error :");
+                $('#modal2').closeModal();
             },
             dataType: "json"
         });

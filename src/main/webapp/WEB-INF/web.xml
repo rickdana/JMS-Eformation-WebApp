@@ -13,17 +13,25 @@
         <servlet-name>Catalogue</servlet-name>
         <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Catalogue</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>Catalogue</servlet-name>
+        <url-pattern>/catalogue</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Login</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Search</servlet-name>
         <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Search</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Catalogue</servlet-name>
-        <url-pattern>/catalogue</url-pattern>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Formation</servlet-name>
@@ -48,14 +56,6 @@
     <servlet-mapping>
         <servlet-name>Eformation</servlet-name>
         <url-pattern>/eformation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Search</servlet-name>
-        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

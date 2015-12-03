@@ -45,10 +45,47 @@ public class Formation extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String firstName = null;
+        String lastName = null;
+        String phone = null;
+        String address = null;
+        String email = null;
+        String postalCode = null;
+        String error = "Formulaire incorrecte :";
+        
+        firstName = (String)request.getParameter("firstName");
+        lastName = (String)request.getParameter("lastName");
+        phone = (String)request.getParameter("phone");
+        address = (String)request.getParameter("address");
+        email = (String)request.getParameter("email");
+        postalCode = (String)request.getParameter("postalCode");
+        Client c = new Client();
+        if(isValidNumber(phone)){
+           c.setPhone(phone); 
+        }
+        else{
+            error = error+"<br/> Le numéro de téléphone inconrecte";
+        }
+        
+        c.setFirstName(firstName);
+        c.setLastName(lastName);
+        
+        c.setAddress(address);
+        c.setEmail(email);
+      
+        System.out.println(firstName);
+        
         this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-
     }
-
+    
+    /**
+     * Verify is a string is a valid phone number
+     *
+     * @return true if the string is a valid phone number
+     */
+    private boolean isValidNumber(String num){
+        return num.matches("^0[1-9]{9}");
+    }
     /**
      * Returns a short description of the servlet.
      *

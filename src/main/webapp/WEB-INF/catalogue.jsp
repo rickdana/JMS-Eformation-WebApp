@@ -57,22 +57,22 @@
             <div id="modal1" class="modal">
                 <div class="modal-content">
                     <h4>Modal Header</h4>
-                    <form method="post">
+                    <form id="searchForm" action="./search" method="POST">
                         <div class="input-field col s4">
                             <i class="material-icons prefix">spellcheck</i>
-                            <input id="motCle" type="text" class="validate">
+                            <input id="motCle" name="motCle" type="text" class="validate">
                             <label for="motCle">Mots clés</label>
                         </div>
 
                         <div class="input-field col s4">
                             <i class="material-icons prefix">schedule</i>
-                            <input id="date" type="date" class="datepicker">
+                            <input id="date" name="date" type="date" class="datepicker validate">
                         </div>
                         <div class="input-field col s12">
-                            <select id="listeVille" class="browser-default">
+                            <select id="lieu"  name="lieu" class="browser-default">
                                 <option value="" disabled selected>Choose your option</option>
                                 <c:forEach items="${locationList}" var="location">
-                                    <option value="1">${location['city']}</option> 
+                                    <option value="${location['city']}">${location['city']}</option> 
                                 </c:forEach>
                             </select>
 

@@ -57,28 +57,29 @@
                                     <label for="first_name">Prénom</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input placeholder="Nom" id="last_name" type="text" class="validate">
+                                    <input placeholder="Nom" id="last_name" type="text" class="validate" required>
                                     <label for="last_name">Nom</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input placeholder="adresse@email.com" id="email" type="email" class="validate">
+                                     <input placeholder="0x xx xx xx xx" id="tel" type="tel" class="validate">
+                                     <label for="tel">N° téléphone</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input placeholder="adresse@email.com" id="email" type="email" class="validate" required>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input placeholder="25 rue dupont" id="adresse" type="text" class="validate">
+                                    <input placeholder="25 rue dupont" id="adresse" type="text" class="validate" required>
                                     <label for="adresse">Adresse</label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input placeholder="75000" id="codePostal" type="number" class="validate">
-                                    <label for="codePostal">Code Postal</label>
-                                </div>
-                            </div>
+                            
                         </form>
                     </div>
                 </div>

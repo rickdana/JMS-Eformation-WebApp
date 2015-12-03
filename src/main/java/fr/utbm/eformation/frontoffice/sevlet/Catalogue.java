@@ -71,9 +71,8 @@ public class Catalogue extends HttpServlet {
         RequestDispatcher dis;
         dis = getServletContext().getRequestDispatcher("/search");
         dis.forward(request, response);
-
-
-    }
+        
+ }
 
     /**
      * Returns a short description of the servlet.

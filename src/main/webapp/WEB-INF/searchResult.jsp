@@ -26,30 +26,32 @@
                     <p>Aucuns resultats Trouvés</p>
                 </c:if>
                 <c:if test="${res != 0}">
-                    <c:forEach items="${resultList}" var="r">
-                        <div class="col s4">
-                            <div class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" src="/Projet_LO54/img/office.jpg">
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
-                                    <p><a href="<c:url value="/formation?id=${r.courseSessionId}"/>">En savoir plus !</a></p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4"><c:out value="${r.course.title}" default="Titre de la formation"/><i class="material-icons right">close</i></span>
-                                    <p>Ceci est un petit résumé !...
+                    <c:forEach items="${resultList}" var="f" begin="0" end="5">
+                    <div class="col s4">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="/Projet_LO54/img/office.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4"><i class="material-icons right">more_vert</i></span>
+                                <p><a href="<c:url value="/formation?id=${f.courseSessionId}"/>">En savoir plus !</a></p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4"><c:out value="${f.course.title}" default="Titre de la formation"/><i class="material-icons right">close</i></span>
+                                <p>Ceci est un petit résumé !...
 
-                                    </p>
-                                    <p class="regBtn">
-                                        <a href="<c:url value="/formation?id=${r.courseSessionId}"/>" class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
-                                            <i class="material-icons right">send</i>
-                                        </a>
-                                    </p>
-                                </div>
+                                </p>
+                                <p class="regBtn">
+                                    <a href="<c:url value="/forma
+ConsoleSearchEmulationRendering
+tion?id=${f.courseSessionId}"/>" class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
+                                        <i class="material-icons right">send</i>
+                                    </a>
+                                </p>
                             </div>
                         </div>
-                    </c:forEach>
+                    </div>
+                </c:forEach>
                 </c:if>
             </div>
 
