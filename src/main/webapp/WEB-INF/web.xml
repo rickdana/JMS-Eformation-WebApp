@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-            http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <!-- Login filter-->
     <filter>
         <filter-name>LoginFilter</filter-name>
-        <filter-class>fr.utbm.projet_lo54.filter.LoginFilter</filter-class>
+        <filter-class>fr.utbm.eformation.frontoffice.filter.LoginFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
@@ -14,11 +11,15 @@
     </filter-mapping>
     <servlet>
         <servlet-name>Catalogue</servlet-name>
-        <servlet-class>fr.utbm.projet_lo54.sevlet.Catalogue</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Catalogue</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>fr.utbm.projet_lo54.sevlet.Login</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Search</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Catalogue</servlet-name>
@@ -26,7 +27,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Formation</servlet-name>
-        <servlet-class>fr.utbm.projet_lo54.sevlet.Formation</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Formation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Formation</servlet-name>
@@ -34,7 +35,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Calendrier</servlet-name>
-        <servlet-class>fr.utbm.projet_lo54.sevlet.Calendrier</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Calendrier</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Calendrier</servlet-name>
@@ -42,7 +43,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Eformation</servlet-name>
-        <servlet-class>fr.utbm.projet_lo54.sevlet.Eformation</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Eformation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Eformation</servlet-name>
@@ -51,6 +52,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

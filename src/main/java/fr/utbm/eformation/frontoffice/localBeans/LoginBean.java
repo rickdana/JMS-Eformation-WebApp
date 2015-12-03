@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.projet_lo54.localBeans;
+package fr.utbm.eformation.frontoffice.localBeans;
 
 import java.io.Serializable;
 

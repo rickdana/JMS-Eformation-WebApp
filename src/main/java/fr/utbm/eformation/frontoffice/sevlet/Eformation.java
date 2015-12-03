@@ -3,12 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.projet_lo54.sevlet;
+package fr.utbm.eformation.frontoffice.sevlet;
 
-import fr.utbm.projet_lo54.localBeans.LoginBean;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author java
  */
-public class Login extends HttpServlet {
+public class Eformation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +27,6 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -42,8 +39,7 @@ public class Login extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
-
+       this.getServletContext().getRequestDispatcher("/WEB-INF/eFormation.jsp").forward(request, response);
     }
 
     /**
@@ -55,30 +51,9 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        LoginBean user = new LoginBean();
-        user.setLogin(request.getParameter("login"));
-        user.setPassword(request.getParameter("motDePasse"));
-        user.setIsLoggedIn(false);
-        
-       //On vérifie que les patramètres passés son ok !!
-        
-       String link = user.doFilter();
-       ServletContext context=this.getServletContext();
-       context.log(link);
-       
-       this.getServletContext().getRequestDispatcher(link).forward(request, response);
-        
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

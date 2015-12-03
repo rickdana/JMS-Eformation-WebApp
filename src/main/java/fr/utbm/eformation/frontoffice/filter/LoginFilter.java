@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.projet_lo54.filter;
+package fr.utbm.eformation.frontoffice.filter;
 
 import java.io.IOException;
 import javax.servlet.Filter;

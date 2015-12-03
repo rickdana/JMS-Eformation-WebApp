@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.projet_lo54.sevlet;
+package fr.utbm.eformation.frontoffice.sevlet;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import fr.utbm.eformation.core.entity.CourseSession;
 import fr.utbm.eformation.core.entity.Location;
 import fr.utbm.eformation.core.service.FormationService;
@@ -31,7 +32,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "Catalogue", urlPatterns = {"/catalogue"})
 public class Catalogue extends HttpServlet {
-
     public Catalogue() {
         super();
     }
@@ -53,7 +53,6 @@ public class Catalogue extends HttpServlet {
 
         request.setAttribute("locationList", locationList);
         request.setAttribute("listFormation", courseSessionList);
-
         RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp");
         dis.forward(request, response);
     }
@@ -68,29 +67,12 @@ public class Catalogue extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        FormationService f = new FormationService();
-        LocationService l = new LocationService();
-        List<CourseSession> courseSessionList;
-        List<Location> locationList;
-        SimpleDateFormat formater = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
-
-        /*
-            recupère les paramètre de la recherche 
-        */
-        String motCle = request.getParameter("motCle");
-        String d = request.getParameter("date");
-        Date date = null;
-        try {
-            date = formater.parse(d);
-        } catch (ParseException ex) {
-            Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       // System.out.println(date.toString());
-        String lieu = request.getParameter("lieu");
         
-        //courseSessionList = f.searchFormations(motCle, date, lieu);
-        RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp");
+        RequestDispatcher dis;
+        dis = getServletContext().getRequestDispatcher("/search");
         dis.forward(request, response);
+
+
     }
 
     /**
