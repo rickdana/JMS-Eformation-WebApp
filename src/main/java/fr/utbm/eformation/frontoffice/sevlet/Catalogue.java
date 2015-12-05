@@ -43,7 +43,7 @@ public class Catalogue extends HttpServlet {
         List<CourseSession> courseSessionList;
         List<Location> locationList;
         //On recupère la liste complète des formation disponible
-        courseSessionList = f.getallFormations();
+        courseSessionList = f.getAllFormations();
 
         /*On recupère toutes les localisations disponibles. 
          * la liste sera affiché dans une une liste déroulante dans le formulaire de recherche de formation

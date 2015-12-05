@@ -82,43 +82,66 @@ $(document).ready(function () {
     */
     /*Requette Ajax d'inscripton*/
      $('#modalValideBtnReg').click(function () {
-        Param = {
+        $("#registerForm").submit();
+    });
+    
+    
+
+
+});
+
+function submitForm(){
+    Param = {
             firstName: null,
             lastName: null,
             address: null,
             phone: null,
             email:null,
-            postalCode:null
+            sessionId:null
         };
-        var firstName= $('#first_name').val();
-        var lastName = $('#last_name').val();
-        var address = $('#adresse').val();
-        var phone = $('#tel').val();;
-        var email = $('#email').val();;
-        var postalCode = $('#codePostal').val();;
-        var url = "http://localhost:8080/Projet_LO54/formation";
-        Param.firstName = firstName;
-        Param.lastName = lastName;
-        Param.address = address;
-        Param.phone = phone;
-        Param.email = email;
-        Param.postalCode = postalCode;
-        //alert("Data sent:"+reqParam.date+" " +reqParam.lieu);
-        //alert("Requette sent to : " + url);
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: Param,
-            success: function () {
-                        alert("Succes");
-                        $('#modal2').closeModal();
-                    },
-            error: function () {
-                //alert("error :");
-                $('#modal2').closeModal();
-            },
-            dataType: "json"
-        });
+    var firstName= $('#first_name').val();
+    var lastName = $('#last_name').val();
+    var address = $('#adresse').val();
+    var phone = $('#tel').val();
+    var email = $('#email').val();
+    var sessionId = $('#sessionId').val();
+    var url = "http://localhost:8080/Projet_LO54/formation";
+    Param.firstName = firstName;
+    Param.lastName = lastName;
+    Param.address = address;
+    Param.phone = phone;
+    Param.email = email;
+    Param.sessionId = sessionId;
+    //alert("Data sent:"+reqParam.date+" " +reqParam.lieu);
+    //alert("Requette sent to : " + url);
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: Param,
+        success: function (msg) {
+                    //alert(msg);
+                    $("#modalContentDiv").html(msg);
+                    var i = msg.indexOf("enregistrement");
+                   
+                    
+                    $('#modal1').openModal({
+                        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                        opacity: .5, // Opacity of modal background
+                        in_duration: 300, // Transition in duration
+                        out_duration: 200 // Transition out duration
+                    });
+                    
+                    if(i > 0){
+                       //go to catalogue if all good
+                       document.getElementById('okLink').setAttribute("href","/Projet_LO54/catalogue");
+                    }
+                    
+                },
+        error: function (error) {
+            alert("error :"+error);
+            $('#modal2').closeModal();
+        },
+        dataType: "text"
     });
-});
-
+    return false ; // pour empecher l'envoi du formulaire
+}

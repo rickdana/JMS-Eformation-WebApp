@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.utbm.eformation.frontoffice.sevlet;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import fr.utbm.eformation.core.entity.*;
 import fr.utbm.eformation.core.service.*;
+import fr.utbm.eformation.frontoffice.form.CustomerForm;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,63 +27,51 @@ public class Formation extends HttpServlet {
         CourseSession courseSession = new CourseSession();
         //String var = (String) request.getAttribute("id");
         int id;
-        id = Integer.parseInt(request.getParameter("id"));
-        // System.out.println("l'id da la formation passée est :"+id);
-        courseSession.toString();
-        courseSession = f.getCourseSession(id);
-        request.setAttribute("session", courseSession);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
-
+        try{
+            id = Integer.parseInt(request.getParameter("id"));     
+            courseSession = f.getCourseSession(id);
+            request.setAttribute("session", courseSession);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/formation2.jsp").forward(request, response);
+        }catch(Exception e){
+            request.setAttribute("erreur", "Votre requ&ecirc;te n'a pas aboutit");
+            this.getServletContext().getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+            
+        }
+         
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String firstName = null;
-        String lastName = null;
-        String phone = null;
-        String address = null;
-        String email = null;
-        String postalCode = null;
-        String error = "Formulaire incorrecte :";
         
-        firstName = (String)request.getParameter("firstName");
-        lastName = (String)request.getParameter("lastName");
-        phone = (String)request.getParameter("phone");
-        address = (String)request.getParameter("address");
-        email = (String)request.getParameter("email");
-        postalCode = (String)request.getParameter("postalCode");
-        Client c = new Client();
-        if(isValidNumber(phone)){
-           c.setPhone(phone); 
+        FormationService fs = new FormationService();
+        ClientService customerService = new ClientService();
+        
+        CourseSession cs = null;
+        String result = null;
+        
+        CustomerForm cf = new CustomerForm();
+        cf.hydrateFields(request);
+        Client c = cf.buildClient();
+        
+        
+        
+        if (c != null ){
+            //specify session and save client 
+            int idSession = Integer.parseInt(request.getParameter("sessionId"));
+            cs = fs.getCourseSession(idSession);
+            c.setSession(cs);
+            customerService.addClient(c);          
+            result = "Votre enregistrement à cette session a été pris en compte.";
+        }else{
+            // error
+            result = "Il y a des erreurs dans votre formulaire. Veuillez vérifier les champs";
         }
-        else{
-            error = error+"<br/> Le numéro de téléphone inconrecte";
-        }
         
-        c.setFirstName(firstName);
-        c.setLastName(lastName);
+        request.setAttribute("result", result);
         
-        c.setAddress(address);
-        c.setEmail(email);
-      
-        System.out.println(firstName);
-        
-        this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/ajax/response.jsp").forward(request, response);
     }
     
-    /**
-     * Verify is a string is a valid phone number
-     *
-     * @return true if the string is a valid phone number
-     */
-    private boolean isValidNumber(String num){
-        return num.matches("^0[1-9]{9}");
-    }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -1,0 +1,53 @@
+/* 
+    Created on : 4 déc. 2015, 13:45:45
+    Author     : java
+*/
+
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#containerDiv{
+     height: 100%;
+     width: 100%;
+}
+#contentDiv{
+     min-height: 100%;
+     width: 100%;
+}
+
+#footerDiv{
+     /*height: 3em;
+     margin-top: -3em;*/
+}
+
+footer.page-footer {
+    background-color: #ee6e73;
+    /*margin-top: 20px;
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;*/
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+#inscription{
+    margin-top: 0 !important;
+}
+#modalValideBtnReg{
+    left: 61%;
+}
+
+.input-field label {
+    font-size: 1.1em !important;
+}
+h4.formationTitle{
+    text-align: center;
+    color: #1142aa;
+}
+.modal{
+    width: 40% !important;
+}

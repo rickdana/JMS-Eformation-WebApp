@@ -5,7 +5,6 @@
 --%>
 
 
-<!DOCTYPE html>
 <div class="navbar-fixed red">
     <nav>
         <div class="nav-wrapper">
