@@ -99,21 +99,14 @@ function submitForm(){
             email:null,
             sessionId:null
         };
-    var firstName= $('#first_name').val();
-    var lastName = $('#last_name').val();
-    var address = $('#adresse').val();
-    var phone = $('#tel').val();
-    var email = $('#email').val();
-    var sessionId = $('#sessionId').val();
+    Param.firstName = $('#first_name').val();
+    Param.lastName = $('#last_name').val();
+    Param.address = $('#adresse').val();
+    Param.phone = $('#tel').val();
+    Param.email = $('#email').val();
+    Param.sessionId= $('#sessionId').val();
     var url = "http://localhost:8080/Projet_LO54/formation";
-    Param.firstName = firstName;
-    Param.lastName = lastName;
-    Param.address = address;
-    Param.phone = phone;
-    Param.email = email;
-    Param.sessionId = sessionId;
-    //alert("Data sent:"+reqParam.date+" " +reqParam.lieu);
-    //alert("Requette sent to : " + url);
+    
     $.ajax({
         type: "POST",
         url: url,
@@ -134,6 +127,11 @@ function submitForm(){
                     if(i > 0){
                        //go to catalogue if all good
                        document.getElementById('okLink').setAttribute("href","/Projet_LO54/catalogue");
+                       $('#successPicture').show();
+                       $('#errorPicture').hide();
+                    }else{
+                       $('#successPicture').hide();
+                       $('#errorPicture').show();
                     }
                     
                 },

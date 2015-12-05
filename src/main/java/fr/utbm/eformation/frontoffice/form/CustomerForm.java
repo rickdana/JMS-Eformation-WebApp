@@ -19,7 +19,10 @@ public class CustomerForm {
     private String address = null;
     private String email = null;
    
-    
+    /**
+     * hydrate all field of the object with value in field of the form
+     * @param request a HttpServletRequest object
+     */
     public void hydrateFields(HttpServletRequest request){
         this.firstName = (String)request.getParameter("firstName");
         this.lastName = (String)request.getParameter("lastName");
@@ -28,18 +31,24 @@ public class CustomerForm {
         this.email = (String)request.getParameter("email");
         
     }
+    
+    /**
+     * Check if all fields are validated
+     * @return true if all fields are validated
+     */
     public boolean valideFieldForm(){
        
         boolean v1 = false;
-        boolean v2 = false;
+        boolean v2 = true;
         boolean v3 = false;
-        if (this.firstName != null && this.lastName!= null  && this.address!= null){
+        
+        if (!this.lastName.equals("")  && !this.address.equals("")){
             v1 = true;
         }
-        if (this.phone != null){
+        if (!this.phone.equals("")){
             v2 = this.isValidNumber(this.phone);
         }
-        if (this.email != null){
+        if (!this.email.equals("")){
             v3 = this.isValideEmail(this.email);
         }
         
@@ -65,7 +74,10 @@ public class CustomerForm {
         return mail.matches(pattern);
         //return true;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public Client buildClient(){
         Client c = null;
         if (this.valideFieldForm()){

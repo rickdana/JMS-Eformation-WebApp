@@ -31,7 +31,7 @@ public class Formation extends HttpServlet {
             id = Integer.parseInt(request.getParameter("id"));     
             courseSession = f.getCourseSession(id);
             request.setAttribute("session", courseSession);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/formation2.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
         }catch(Exception e){
             request.setAttribute("erreur", "Votre requ&ecirc;te n'a pas aboutit");
             this.getServletContext().getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
@@ -64,7 +64,7 @@ public class Formation extends HttpServlet {
             result = "Votre enregistrement à cette session a été pris en compte.";
         }else{
             // error
-            result = "Il y a des erreurs dans votre formulaire. Veuillez vérifier les champs";
+            result = "Il y a des erreurs dans votre formulaire. Veuillez vérifier les champs.";
         }
         
         request.setAttribute("result", result);

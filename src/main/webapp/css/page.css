@@ -49,5 +49,22 @@ h4.formationTitle{
     color: #1142aa;
 }
 .modal{
-    width: 40% !important;
+    width: 35% !important;
+}
+
+label span{
+    color: red !important;
+}
+
+#detailSession td{
+   font-style: italic !important; 
+}
+
+#modal1 .row{
+    margin-bottom: 0 !important;
+    padding-top: 10px;
+}
+
+#modalContentDiv{
+    font-size: 1.1em;
 }
