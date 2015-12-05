@@ -1,4 +1,4 @@
-package fr.utbm.eformation.frontoffice.sevlet;
+package fr.utbm.eformation.frontoffice.servlet;
 
 import fr.utbm.eformation.core.entity.*;
 import fr.utbm.eformation.core.service.*;

@@ -11,7 +11,7 @@
     </filter-mapping>
     <servlet>
         <servlet-name>Catalogue</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Catalogue</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Catalogue</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Catalogue</servlet-name>
@@ -19,7 +19,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Login</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Login</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
@@ -27,7 +27,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Search</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Search</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Search</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
@@ -35,7 +35,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Formation</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Formation</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Formation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Formation</servlet-name>
@@ -43,7 +43,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Calendrier</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Calendrier</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Calendrier</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Calendrier</servlet-name>
@@ -51,7 +51,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Eformation</servlet-name>
-        <servlet-class>fr.utbm.eformation.frontoffice.sevlet.Eformation</servlet-class>
+        <servlet-class>fr.utbm.eformation.frontoffice.servlet.Eformation</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Eformation</servlet-name>

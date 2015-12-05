@@ -3,22 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.utbm.eformation.frontoffice.sevlet;
+package fr.utbm.eformation.frontoffice.servlet;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import fr.utbm.eformation.core.entity.CourseSession;
 import fr.utbm.eformation.core.entity.Location;
 import fr.utbm.eformation.core.service.FormationService;
 import fr.utbm.eformation.core.service.LocationService;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
