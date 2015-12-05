@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.eformation.frontoffice.servlet;
 
 import fr.utbm.eformation.core.entity.CourseSession;
 import fr.utbm.eformation.core.entity.Location;
 import fr.utbm.eformation.core.service.FormationService;
 import fr.utbm.eformation.core.service.LocationService;
+import fr.utbm.eformation.frontoffice.form.SearchForm;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -74,50 +65,16 @@ public class Search extends HttpServlet {
         LocationService l = new LocationService();
         List<CourseSession> resultList;
         List<Location> locationList;
-        Location lieu = null;
-        String motCle = null;
-        String d = null;
-        Date date = null;
-        String ville = null;
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd");
-
-
-        /*
-         recupère les paramètre de la recherche
-         */
-        motCle = request.getParameter("motCle");
-        ville = request.getParameter("lieu");
-        d = request.getParameter("date");
-
-        if (!d.equals("")) {
-            try {
-                /*String[] splitDate = d.split("-");
-                 System.out.println(splitDate[1] + "-" + splitDate[2] + "-" + splitDate[0]);
-                 date = new Date(splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0]);*/
-                date = formater.parse(d);
-                System.out.println("------------> La DATE :" + date.toString() + " motCle : " + motCle);
-            } catch (ParseException ex) {
-                Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        if (ville != null) {
-            if (!ville.equals("Choose your option")) {
-                lieu = new Location();
-                lieu.setCity(ville);
-
-            }
-        }
-
-        System.out.println("---------> Mot clé : " + motCle);
-
-        System.out.println("---------> Lieu  : " + ville);
-
-        resultList = f.searchFormations(motCle, date, lieu);
+        
+        SearchForm sf = new SearchForm();
+        
+        sf.hydrateFields(request);
+        
+        resultList = f.searchFormations(sf.getMotCle(), sf.getParseDate(), sf.getLocation());
         System.out.println("---------> Nombre de résultas : " + resultList.size());
-        if (resultList.size() == 0) {
+       /* if (resultList.size() == 0) {
             System.out.println("Aucun résultat ne correspond aux critères sélectionés");
-        }
+        }*/
 
         request.setAttribute("res", resultList.size());
         request.setAttribute("resultList", resultList);

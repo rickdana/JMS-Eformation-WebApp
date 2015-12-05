@@ -11,15 +11,17 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="./css/page.css"  media="screen,projection"/>
+
         <link type="text/css" rel="stylesheet" href="./css/styles.css"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="./materialize/css/materialize.css"  media="screen,projection"/>
-        
+
         <title>Erreur</title>
     </head>
     <body>
         <div id='containerDiv'>
             <header class="header-bar">
-                <%@ include file="enTete.jsp" %>
+                <%@ include file="includes/enTete.jsp" %>
             </header>
             <div class="container">
                 <div class="row">
@@ -27,14 +29,14 @@
                         <img class="z-depth-2 responsive-img" src="/Projet_LO54/img/error.jpg">
                     </div>
                 </div>
-               
+
             </div>
         </div>
-            
+
         <div id='footerDiv'>
-            <%@ include file="piedDePage.jsp" %>
+            <%@ include file="includes/piedDePage.jsp" %>
         </div>
-        
+
         <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="./materialize/js/materialize.js"></script>
         <script type="text/javascript" src="./js/js.js"></script>

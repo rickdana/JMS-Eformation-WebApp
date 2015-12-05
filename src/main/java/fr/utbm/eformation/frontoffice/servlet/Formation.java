@@ -2,7 +2,7 @@ package fr.utbm.eformation.frontoffice.servlet;
 
 import fr.utbm.eformation.core.entity.*;
 import fr.utbm.eformation.core.service.*;
-import fr.utbm.eformation.frontoffice.form.CustomerForm;
+import fr.utbm.eformation.frontoffice.form.ClientForm;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,7 +34,7 @@ public class Formation extends HttpServlet {
             this.getServletContext().getRequestDispatcher("/WEB-INF/formation.jsp").forward(request, response);
         }catch(Exception e){
             request.setAttribute("erreur", "Votre requ&ecirc;te n'a pas aboutit");
-            this.getServletContext().getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/WEB-INF/error/error.jsp").forward(request, response);
             
         }
          
@@ -49,7 +49,7 @@ public class Formation extends HttpServlet {
         CourseSession cs = null;
         String result = null;
         
-        CustomerForm cf = new CustomerForm();
+        ClientForm cf = new ClientForm();
         cf.hydrateFields(request);
         Client c = cf.buildClient();
         

@@ -22,7 +22,7 @@
         <div id="containerDiv">
             <div id="contentDiv">
                 <header class="header-bar">
-                    <%@ include file="enTete.jsp" %>
+                    <%@ include file="includes/enTete.jsp" %>
                 </header>
                 <div class="container">             
                     <div class="row">
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div id='footerDiv'>
-                    <%@ include file="piedDePage.jsp" %>
+                    <%@ include file="includes/piedDePage.jsp" %>
             </div>
         </div>
         <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>

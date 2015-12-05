@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author java
  */
-public class CustomerForm {
+public class ClientForm {
     private String firstName = null;
     private String lastName = null;
     private String phone = null;

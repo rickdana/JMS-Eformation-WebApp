@@ -1,12 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package fr.utbm.eformation.frontoffice.servlet;
 
+import fr.utbm.eformation.core.entity.CourseSession;
+import fr.utbm.eformation.core.service.FormationService;
+import fr.utbm.eformation.core.service.LocationService;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,6 @@ public class Calendrier extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -38,9 +36,16 @@ public class Calendrier extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/calendrier.jsp").forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        FormationService f = new FormationService();
 
+        List<CourseSession> courseSessionList;
+
+        courseSessionList = f.getAllFormations();
+
+        request.setAttribute("sessionList", courseSessionList);
+        RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/calendrier.jsp");
+        dis.forward(request, response);
     }
 
     /**
@@ -52,8 +57,8 @@ public class Calendrier extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-         
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         this.getServletContext().getRequestDispatcher("/WEB-INF/calendrier.jsp").forward(request, response);
 
     }

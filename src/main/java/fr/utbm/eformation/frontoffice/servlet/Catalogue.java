@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package fr.utbm.eformation.frontoffice.servlet;
 
 import fr.utbm.eformation.core.entity.CourseSession;
@@ -11,12 +7,14 @@ import fr.utbm.eformation.core.service.FormationService;
 import fr.utbm.eformation.core.service.LocationService;
 import java.io.IOException;
 import java.util.List;
+import javax.mail.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,8 +40,8 @@ public class Catalogue extends HttpServlet {
          */
         locationList = l.getListLocations();
         //System.out.println(list.size());
-
-        request.setAttribute("locationList", locationList);
+        HttpSession session = request.getSession();
+        session.setAttribute("locationList", locationList);
         request.setAttribute("listFormation", courseSessionList);
         RequestDispatcher dis = getServletContext().getRequestDispatcher("/WEB-INF/catalogue.jsp");
         dis.forward(request, response);
