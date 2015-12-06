@@ -31,8 +31,8 @@
                                 <table id="detailSession">
                                     <thead><th>Début</th> <th>Fin</th>  <th>Ville</th></thead>
                                     <tr>
-                                        <td>${session.startDate} </td> 
-                                        <td>${session.endDate}</td> 
+                                        <td class="dateSession">${session.startDate} </td> 
+                                        <td class="dateSession">${session.endDate}</td> 
                                         <td>${session.location.city} </td>
                                     </tr>
                                 </table>

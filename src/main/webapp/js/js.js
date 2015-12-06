@@ -51,8 +51,8 @@ $(document).ready(function () {
         $("#registerForm").submit();
     });
     
-    
-
+    /*Pour avoir des dates au format francais*/
+    smartDate();
 
 });
 
@@ -108,4 +108,14 @@ function submitForm(){
         dataType: "text"
     });
     return false ; // pour empecher l'envoi du formulaire
+}
+
+function smartDate(){
+    $('.dateSession').each(function () {
+        d1 = $(this).text();
+        t = d1.trim().split('-');
+        d2 = t[2] + '-' + t[1] + '-' + t[0];
+        //console.log(d2);
+        $(this).text(d2);
+    });
 }

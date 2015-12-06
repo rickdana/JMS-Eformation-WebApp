@@ -9,6 +9,7 @@
     <nav>
         <div class="nav-wrapper">
             <img class="header-img brand-logo.left" src="/Projet_LO54/img/logog.png"/>
+            <a href="#" style="color: #039be5; font-style: italic;" class="brand-logo center">Offre en ligne de formations</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="/Projet_LO54/catalogue">Accueil</a></li>
                 <li><a href="/Projet_LO54/calendrier">À venir</a></li>
