@@ -21,11 +21,11 @@
     <body>
         <div id='containerDiv'>
             <header class="header-bar">
-                <%@ include file="includes/enTete.jsp" %>
+                <%@ include file="../includes/enTete.jsp" %>
             </header>
             <div class="container">
                 <div class="row">
-                    <div class="col s8 offset-s2 grid-example">
+                    <div class="col s8 offset-s2 grid-example" style="text-align: center;">
                         <img class="z-depth-2 responsive-img" src="/Projet_LO54/img/error.jpg">
                     </div>
                 </div>
@@ -34,7 +34,7 @@
         </div>
 
         <div id='footerDiv'>
-            <%@ include file="includes/piedDePage.jsp" %>
+            <%@ include file="../includes/piedDePage.jsp" %>
         </div>
 
         <script type="text/javascript" src="./js/jquery-1.11.3.min.js"></script>

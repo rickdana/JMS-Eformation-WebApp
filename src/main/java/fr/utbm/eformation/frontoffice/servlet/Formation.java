@@ -3,6 +3,7 @@ package fr.utbm.eformation.frontoffice.servlet;
 import fr.utbm.eformation.core.entity.*;
 import fr.utbm.eformation.core.service.*;
 import fr.utbm.eformation.frontoffice.form.ClientForm;
+import fr.utbm.eformation.jms.sender.SessionRegJmsSender;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,14 +62,17 @@ public class Formation extends HttpServlet {
             cs = fs.getCourseSession(idSession);
             c.setSession(cs);
             customerService.addClient(c);          
-            result = "Votre enregistrement à cette session a été pris en compte.";
+            
+            SessionRegJmsSender senderJMS = new SessionRegJmsSender();
+            senderJMS.regNotification(c);
+            
+            result = "Votre enregistrement à cette session a été pris en compte.";         
         }else{
             // error
             result = "Il y a des erreurs dans votre formulaire. Veuillez vérifier les champs.";
         }
         
-        request.setAttribute("result", result);
-        
+        request.setAttribute("result", result);        
         this.getServletContext().getRequestDispatcher("/WEB-INF/ajax/response.jsp").forward(request, response);
     }
     
