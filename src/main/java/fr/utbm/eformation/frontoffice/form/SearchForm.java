@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
+ * Manage search form
  * @author java
  */
 public class SearchForm {
@@ -34,7 +34,7 @@ public class SearchForm {
             try {
                 
                 date = formater.parse(d);
-                System.out.println("------------> La DATE :" + date.toString() + " motCle : " + motCle);
+                //System.out.println("------------> La DATE :" + date.toString() + " motCle : " + motCle);
             } catch (ParseException ex) {
                 Logger.getLogger(Catalogue.class.getName()).log(Level.SEVERE, null, ex);
             }

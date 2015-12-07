@@ -63,7 +63,7 @@
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal">
                         <div class="modal-content">
-                            <h4>Modal Header</h4>
+                            <h4>Rechercher des formations</h4>
                             <form id="searchForm" action="./search" method="POST">
                                 <div class="input-field col s4">
                                     <i class="material-icons prefix">spellcheck</i>
