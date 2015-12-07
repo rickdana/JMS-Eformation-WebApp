@@ -7,7 +7,6 @@ import fr.utbm.eformation.core.service.FormationService;
 import fr.utbm.eformation.core.service.LocationService;
 import java.io.IOException;
 import java.util.List;
-import javax.mail.Session;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
