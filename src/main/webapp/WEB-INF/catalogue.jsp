@@ -39,7 +39,7 @@
                                     <div class="card-reveal">
                                         <span class="card-title grey-text text-darken-4"><c:out value="${f.course.title}" default="Titre de la formation"/><i class="material-icons right">close</i></span>
                                         <p>
-                                            <b>Date :</b> <c:out value="${f.startDate}" /> - <c:out value="${f.endDate}" />
+                                            <b>Date :</b> <span class="dateSession"><c:out value="${f.startDate}" /> </span>&nbsp;&nbsp;au&nbsp;&nbsp;<span class="dateSession"><c:out value="${f.endDate}" /></span>
                                         </p>
                                         <p>
                                             <b>Ville :</b> <c:out value="${f.location.city}" /> 

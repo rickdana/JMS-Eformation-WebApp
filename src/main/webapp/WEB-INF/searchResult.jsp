@@ -31,7 +31,7 @@
                                 <div class="col s8 offset-s2 grid-example imgCenter">
                                     <img class="z-depth-2 responsive-img" src="/Projet_LO54/img/SearchIcon.jpg">
                                     <p>
-                                    <h5>0 Résultat: Aucunes formations ne correspond à vos critères</h5>
+                                    <h5><span class="redClass">0 Résultat:</span> Aucunes formations ne correspond à vos critères</h5>
                                     </p>
                                 </div>
 
@@ -51,7 +51,7 @@
                                         <div class="card-reveal">
                                             <span class="card-title grey-text text-darken-4"><c:out value="${f.course.title}" default="Titre de la formation"/><i class="material-icons right">close</i></span>
                                             <p>
-                                                <b>Date :</b> <c:out value="${f.startDate}" /> - <c:out value="${f.endDate}" />
+                                                <b>Date :</b> <span class="dateSession"><c:out value="${f.startDate}" /> </span> au <span class="dateSession"><c:out value="${f.endDate}" /></span>
                                             </p>
                                             <p>
                                                 <b>Ville :</b> <c:out value="${f.location.city}" /> 
